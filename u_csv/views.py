@@ -1,3 +1,6 @@
+from django.core.files.storage import default_storage
+from django.core.files.uploadedfile import UploadedFile
+from django.http import HttpResponse
 from django.shortcuts import render
 from u_csv.forms import DocumentForm
 from django.shortcuts import redirect
@@ -5,7 +8,7 @@ from .Parser import Data
 import os
 from CATt import settings
 from .Parser.Common import nl
-
+import json
 
 def model_form_upload(request):
     if request.method == 'POST':
@@ -15,14 +18,23 @@ def model_form_upload(request):
             return redirect('csv/')
     else:
         form = DocumentForm()
-    return render(request, 'upload_form.html', {
-        'form': form
-    })
+    return render(request, 'upload_form.html')
 
 
 def print_csv_file(request):
-    ans = str(Data.getScheduleData(os.path.join(settings.BASE_DIR, 'files/Sample_Data.csv'))).split(nl)
-    #ans = Parser.parse(os.path.join(settings.BASE_DIR, 'files/Sample_Data.csv'))
-    return render(request, 'print_csv.html', {
-        'ans': ans
-    })
+    print(request.FILES)
+
+
+    #save_path = os.path.join(settings.BASE_DIR, 'files/')
+    #json.
+    #save_path = os.path.join(save_path, request.FILES['file'])
+    path = os.path.join(settings.BASE_DIR, 'files/')
+    path = path + "Sample_Data.csv"
+    print(path)
+    #path = default_storage.save(save_path, request.FILES['file'])
+    ans = str(Data.getScheduleData(path)).split(nl)
+    data = json.dumps(ans)
+    #return HttpResponse()
+    return HttpResponse(data, content_type="application/json")
+    #return render(request, 'print_csv.html', { 'ans': ans })
+

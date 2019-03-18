@@ -223,4 +223,4 @@ def getScheduleData(file_path: str) -> ScheduleData:
     return ScheduleData(days, slots, lec_auds, tut_auds, lab_auds, Instructor.instructors, Grade.grades, Courses)
 
 
-print(getScheduleData('/home/abdurasul/Project/CATt/u_csv/Parser/Sample_Data.csv'))
+#print(getScheduleData('/home/abdurasul/Project/CATt/u_csv/Parser/Sample_Data.csv'))

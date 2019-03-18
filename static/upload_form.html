@@ -65,31 +65,42 @@
    <div class="row">
        <nav id="sidebar" class="col-md-2 d-none d-md-block bg-light sidebar">
            <div class="sidebar-sticky">
-               <form action="http://vanishmax.s3.amazonaws.com/" method="post" id="uploadCSV" enctype="multipart/form-data">
+{#               <form action="csv/" method="post" id="uploadCSV" enctype="multipart/form-data">#}
+                    <form id="uploadCSV">
                    <div class="row justify-content-center">
-                       <div class="file_upload">
-                        {% block content %}
-                            <form method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit">Upload</button>
-                            </form>
+                       <button type="button" class="btn btn-outline-success">
+                           Upload .CSV
+                           <input type="hidden" name="key" id="keyInput" value="">
 
-                        {% endblock %}
-                   </div>
+                           <input type="file" class="file" name="file" id="file" onchange="handleFileChange()"/>
+                       </button>
+                       {% csrf_token %}
+{#                       <div class="file_upload">#}
+{#                        {% block content %}#}
+{#                            <form method="post" enctype="multipart/form-data">#}
+{#                                {% csrf_token %}#}
+{#                                {{ form.as_p }}#}
+{#                                <button type="submit">Upload</button>#}
+{#                            </form>#}
+{##}
+{#                        {% endblock %}#}
+{#                   </div>#}
                    <div class="row justify-content-center">
                        <p id="fileMessage">Filename</p>
                    </div>
-                   <div class="row justify-content-center">
-                       <input type="submit" name="submit" class="btn btn-outline-success">
                    </div>
+
                </form>
+               <div class="row justify-content-center">
+{#                       <input name="submit" class="btn btn-outline-success" onclick="sendCSV()">#}
+                       <button class="btn btn-lg btn-primary btn-block" id="submitButton" onclick="sendCSV()">Submit</button>
+                   </div>
            </div>
        </nav>
    </div>
 
     <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <h2>Here will be the schedule</h2>
+        <div id ="Schedule"><h2>Here will be the schedule</h2></div>
     </main>
 </div>
 <script>
@@ -98,6 +109,11 @@
       document.getElementById("fileMessage").innerText = file.name;
       document.getElementById("keyInput").value = "CSVs/" + file.name;
     }
+
 </script>
+{% load staticfiles %}
+<script src="{% static 'js/upload_form.js'%}"> </script>
+<!--Debug-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
