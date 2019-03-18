@@ -221,4 +221,4 @@ def getScheduleData(file_path: str) -> ScheduleData:
     return ScheduleData(days, slots, lec_auds, tut_auds, lab_auds, Instructor.instructors, Grade.grades, Courses)
 
 
-print(getScheduleData('Backend/Sample Data.csv'))
+# print(getScheduleData('Backend/Sample Data.csv'))
