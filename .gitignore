@@ -1,2 +1,8 @@
-__pycache__
 .idea
+files
+
+__pycache__
+Backend/__pycache__
+CATt/__pycache__
+u_csv/__pycache__
+u_csv/migrations/__pycache__

@@ -1,7 +1,5 @@
-
-#from .Parser import ListToStr, nl
-from . import Parser
-from .Common import ListToStr, nl
+from Backend.Common import ListToStr, nl
+from Backend import Parser
 
 subdelimeter = '; '
 
@@ -223,4 +221,4 @@ def getScheduleData(file_path: str) -> ScheduleData:
     return ScheduleData(days, slots, lec_auds, tut_auds, lab_auds, Instructor.instructors, Grade.grades, Courses)
 
 
-#print(getScheduleData('/home/abdurasul/Project/CATt/u_csv/Parser/Sample_Data.csv'))
+print(getScheduleData('Backend/Sample Data.csv'))

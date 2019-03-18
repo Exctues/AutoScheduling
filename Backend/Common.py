@@ -1,4 +1,4 @@
-nl = '<br>'
+nl = '\n'
 
 
 def ListToStr(l: list, delimiter: str = ', ', end: str = '.', func=str) -> str:

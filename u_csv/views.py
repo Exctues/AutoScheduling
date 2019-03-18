@@ -4,10 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from u_csv.forms import DocumentForm
 from django.shortcuts import redirect
-from .Parser import Data
+from Backend import Data
+from Backend.Common import nl
 import os
 from CATt import settings
-from .Parser.Common import nl
 import json
 
 def model_form_upload(request):
