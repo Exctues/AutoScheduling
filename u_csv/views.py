@@ -28,8 +28,8 @@ def print_csv_file(request):
     #save_path = os.path.join(settings.BASE_DIR, 'files/')
     #json.
     #save_path = os.path.join(save_path, request.FILES['file'])
-    path = os.path.join(settings.BASE_DIR, 'files/')
-    path = path + "Sample_Data.csv"
+    # path = os.path.join(settings.BASE_DIR, 'files/')
+    path = 'Backend/Sample Data.csv'
     print(path)
     #path = default_storage.save(save_path, request.FILES['file'])
     ans = str(Data.getScheduleData(path)).split(nl)
