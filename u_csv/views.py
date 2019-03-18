@@ -26,7 +26,6 @@ def print_csv_file(request):
 
 
     #save_path = os.path.join(settings.BASE_DIR, 'files/')
-    #json.
     #save_path = os.path.join(save_path, request.FILES['file'])
     # path = os.path.join(settings.BASE_DIR, 'files/')
     path = 'Backend/Sample Data.csv'
@@ -34,7 +33,6 @@ def print_csv_file(request):
     #path = default_storage.save(save_path, request.FILES['file'])
     ans = str(Data.getScheduleData(path)).split(nl)
     data = json.dumps(ans)
-    #return HttpResponse()
     return HttpResponse(data, content_type="application/json")
     #return render(request, 'print_csv.html', { 'ans': ans })
 
