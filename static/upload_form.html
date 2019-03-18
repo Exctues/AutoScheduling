@@ -1,25 +1,3 @@
-{#<html>#}
-{#    <head>#}
-{#    <title>My Page</title>#}
-{#        {% load staticfiles %}#}
-{#    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">#}
-{#    </head>#}
-{#    <body>#}
-{#        <div class="file_upload">#}
-{#        {% block content %}#}
-{#            <form method="post" enctype="multipart/form-data">#}
-{#                {% csrf_token %}#}
-{#                {{ form.as_p }}#}
-{#                <button type="submit">Upload</button>#}
-{#            </form>#}
-{##}
-{#        {% endblock %}#}
-{#        </div>#}
-{#    </body>#}
-{#</html>#}
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,32 +53,22 @@
                            <input type="file" class="file" name="file" id="file" onchange="handleFileChange()"/>
                        </button>
                        {% csrf_token %}
-{#                       <div class="file_upload">#}
-{#                        {% block content %}#}
-{#                            <form method="post" enctype="multipart/form-data">#}
-{#                                {% csrf_token %}#}
-{#                                {{ form.as_p }}#}
-{#                                <button type="submit">Upload</button>#}
-{#                            </form>#}
-{##}
-{#                        {% endblock %}#}
-{#                   </div>#}
-                   <div class="row justify-content-center">
-                       <p id="fileMessage">Filename</p>
-                   </div>
-                   </div>
 
+
+                   </div>
+{#                    <div class="row col-md-3 justify-content-center">#}
+{#                       <p id="fileMessage">Filename</p>#}
+{#                   </div>#}
                </form>
-               <div class="row justify-content-center">
-{#                       <input name="submit" class="btn btn-outline-success" onclick="sendCSV()">#}
-                       <button class="btn btn-lg btn-primary btn-block" id="submitButton" onclick="sendCSV()">Submit</button>
+               <div class="row justify-content-center mt-3">
+                       <button class="btn btn-lg btn-success btn-block" id="submitButton" onclick="sendCSV()">Submit</button>
                    </div>
            </div>
        </nav>
    </div>
 
     <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div id ="Schedule"><h2>Here will be the schedule</h2></div>
+        <div id ="Schedule"></div>
     </main>
 </div>
 <script>
