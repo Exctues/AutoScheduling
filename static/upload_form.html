@@ -40,35 +40,38 @@
 </nav>
 
 <div class="container-fluid">
-   <div class="row">
-       <nav id="sidebar" class="col-md-2 d-none d-md-block bg-light sidebar">
-           <div class="sidebar-sticky">
-{#               <form action="csv/" method="post" id="uploadCSV" enctype="multipart/form-data">#}
-                    <form id="uploadCSV">
-                   <div class="row justify-content-center">
-                       <button type="button" class="btn btn-outline-success">
-                           Upload .CSV
-                           <input type="hidden" name="key" id="keyInput" value="">
+    <div class="row">
+        <nav id="sidebar" class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              
+                <form action="" method="post" id="uploadCSV" enctype="multipart/form-data">
+                    <div class="row justify-content-center">
+                        <button type="button" class="btn btn-outline-success">
+                            Upload .CSV
+                            <input type="hidden" name="key" id="keyInput" value="">
+                            <input type="file" class="file" name="file" id="file" onchange="handleFileChange()"/>
+                        </button>
+                        {% csrf_token %}
+                    </div>
 
-                           <input type="file" class="file" name="file" id="file" onchange="handleFileChange()"/>
-                       </button>
-                       {% csrf_token %}
+                    <div class="row justify-content-center">
+                        <p id="fileMessage">Filename</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-outline-success" id="submitButton">Submit</button>
+                    </div>
+                </form>
 
-
-                   </div>
-{#                    <div class="row col-md-3 justify-content-center">#}
-{#                       <p id="fileMessage">Filename</p>#}
-{#                   </div>#}
-               </form>
-               <div class="row justify-content-center mt-3">
-                       <button class="btn btn-lg btn-success btn-block" id="submitButton" onclick="sendCSV()">Submit</button>
-                   </div>
-           </div>
-       </nav>
-   </div>
+            </div>
+        </nav>
+    </div>
 
     <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div id ="Schedule"></div>
+        <div id ="Schedule">
+            {% for x in schedule %}
+                {{ x }}<br>
+            {% endfor %}
+        </div>
     </main>
 </div>
 <script>
