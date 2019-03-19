@@ -15,10 +15,7 @@ def model_form_upload(request):
     if request.method == 'POST':
         save_path = os.path.join(settings.BASE_DIR, 'files/')
         path = default_storage.save(save_path, request.FILES['file'])
-        try:
-            ans = str(Data.getScheduleData(path)).split(nl)
-        except:
-            ans = list(["Something went wrong. Choose another file"])
+        ans = Data.getScheduleData(path).split(nl)
         #data = json.dumps(ans)
         #return HttpResponse(data, content_type="application/json")
         return render(request, 'upload_form.html', { 'schedule': ans })
@@ -31,10 +28,7 @@ def print_csv_file(request):
     if request.method == 'POST':
         save_path = os.path.join(settings.BASE_DIR, 'files/')
         path = default_storage.save(save_path, request.FILES['file'])
-        try:
-            ans = str(Data.getScheduleData(path)).split(nl)
-        except:
-            ans = "Something went wrong. Choose another file"
+        ans = Data.getScheduleData(path).split(nl)
         #data = json.dumps(ans)
         #return HttpResponse(data, content_type="application/json")
         return render(request, 'upload_form.html', { 'schedule': ans })

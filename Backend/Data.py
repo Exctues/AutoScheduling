@@ -23,13 +23,13 @@ class Instructor:
         bad_days = bad_days.split(subdelimeter)
         for d in bad_days:
             if d != '' and not (d in days):
-                raise MalformedFile('Instructor ' + name + ' has an unknown day ' + d + ' in busy days!')
+                raise MalformedFile('File malformed: instructor ' + name + ' has an unknown day ' + d + ' in busy days.')
         self.days = [days[i] for i in range(len(days)) if not (days[i] in bad_days)]
         # Init time slots.
         bad_slots = bad_slots.split(subdelimeter)
         for d in bad_slots:
             if d != '' and not (d in slots):
-                raise MalformedFile('Instructor ' + name + ' has an unknown time slot ' + d + ' in busy slots!')
+                raise MalformedFile('File malformed: instructor ' + name + ' has an unknown time slot ' + d + ' in busy slots.')
         self.slots = [slots[i] for i in range(len(slots)) if not (slots[i] in bad_slots)]
 
         Instructor.instructors.append(self)
@@ -88,7 +88,7 @@ class ClassesInfo:
         try:
             number = int(number)
         except ValueError:
-            raise MalformedFile('Classes information contains an invalid number of classes!')
+            raise MalformedFile('File malformed: a course contains an invalid number of classes.')
         if number > 0:
             return ClassesInfo(typ, number, ins_names, auds)
         return None
@@ -102,7 +102,7 @@ class ClassesInfo:
         for name in ins_names:
             teach = Instructor.getInstructorByName(name)
             if teach is None:
-                raise MalformedFile('An unknown instructor conducts classes!')
+                raise MalformedFile('File malformed: an unknown instructor conducts classes.')
             teach.addClasses(self)
             self.instructors.append(teach)
 
@@ -138,7 +138,7 @@ class Course:
 
         g = Grade.getGradeByName(grade_name)
         if g is None:
-            raise MalformedFile('An unknown grade has a course!')
+            raise MalformedFile('File malformed: an unknown grade has a course.')
         g.addCourse(self)
         self.grade = g
 
@@ -171,7 +171,7 @@ class ScheduleData:
                ListToStr(self.courses, nl, '')
 
 
-def getScheduleData(file_path: str) -> ScheduleData:
+def getScheduleDataUnsafe(file_path: str) -> ScheduleData:
     # Get info.
     info = Parser.parse(file_path)
     # Name it.
@@ -219,6 +219,13 @@ def getScheduleData(file_path: str) -> ScheduleData:
         Courses.append(Course(courses[i], Classes[i], specs[i]))
 
     return ScheduleData(days, slots, lec_auds, tut_auds, lab_auds, Instructor.instructors, Grade.grades, Courses)
+
+
+def getScheduleData(path: str) -> str:
+    try:
+        return str(getScheduleDataUnsafe(path))
+    except MalformedFile as e:
+        return str(e)
 
 
 # print(getScheduleData('Backend/Sample Data.csv'))
