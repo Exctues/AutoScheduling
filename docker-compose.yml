@@ -1,0 +1,8 @@
+version: "3.0"
+
+services:
+  django_web:
+    build: {context: ./, dockerfile: Dockerfile}
+    image: catt/djano-web
+    ports:
+      - 8080:8080
