@@ -7,30 +7,93 @@
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Resource style -->
+		<style>
+			.sc-settings{
+				padding: 5px;
+				margin: 0;
+				float: left;
+				left: 35%;
+				position: absolute;
+			}
+			.select-opts{
+				margin-left: 5px;
+				margin-right: 35px;
+				border-radius: 20px;
+				{% comment %} background: rgba(0, 0, 0, 0.1); {% endcomment %}
+				{% comment %} background: #ccff99; {% endcomment %}
+				background: rgba(255, 255, 255, 0.4);
+				color: #000000;
+			}
+			.navbar-myset{
+				height: 50px;
+				font-size: 20px;
+				font-family: Sans;
+			}
+			.my-logo-set{
+				margin-top: 7px;
+			}
+			.myselect-opts{
+				padding: 5px;
+				width: 100px;
+				padding-left: 25px;
+			}
+			.myselect-opts2{
+				padding: 5px;
+				width: 60px;
+				padding-left: 15px;
+			}
+			.mybutton-opts{
+				font-size: 15px;
+				margin-top: 0;
+				align: center;
+				text-align: center;
+				border-radius: 15px;
+				padding: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+				
+			}
+		</style>
 	{% endblock additional_scripts%}
         {% comment %} <title>schedule</title> {% endcomment %}
-
+{% block navbar_set%}
+<nav class="navbar navbar-dark bg-success navbar-myset">
+    <a class="navbar-brand navbar-myset my-logo-set" href="../">CATt</a>
+</nav>
+{% endblock navbar_set%}
 {% block main%}
-        <form action="">
-            Course:
-            <select name="Course" size="1" data-style="bg-success">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            Group: 
-            <select name="Group" size="1">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            <button class="btn btn-outline-success" type="submit" name="submit" id="sbutton ">Process</button>
-        </form>
+<div class="sc-settings">
+<form action="">
+	
+    Course:
+    <select class="select-opts myselect-opts" name="Course" size="1" data-style="bg-success">
+        <option value="1">  B18  </option>
+        <option value="2">  B17  </option>
+        <option value="3">B16</option>
+        <option value="4">B15</option>
+		<option value="5">M18</option>
+		<option value="6">M17</option>
+    </select>
+	
+	
+    Group: 
+    <select class="select-opts myselect-opts2" name="Group" size="1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+    </select>
+	
+    <button class="btn btn-outline-success mybutton-opts" type="submit" name="submit" id="sbutton ">Process</button>
+</form>
+</div>
+<br>
             
         
-        <div class="cd-schedule loading">
+<div class="cd-schedule loading">
 	<div class="timeline">
 		<ul>
 			<li><span>09:00</span></li>
