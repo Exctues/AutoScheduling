@@ -1,0 +1,9 @@
+{% extends 'upload_form.html' %}
+{% block generate_sched%}
+                    <form action="schedule/" method="get" id="genSched">
+                    {% comment %} {% csrf_token %} {% endcomment %}
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-outline-success" id="generateButton">Generate</button>
+                        </div>
+                    </form>
+{% endblock generate_sched%}

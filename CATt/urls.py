@@ -19,13 +19,13 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('upload/', include('u_csv.urls')),
+    path('', include('u_csv.urls')),
 ]
 
 from django.views.generic import RedirectView
 
 urlpatterns += [
-    path('', RedirectView.as_view(url='/upload/', permanent=False)),
+    # path('', RedirectView.as_view(url='/upload/', permanent=False)),
 ]
 
 from django.conf import settings
