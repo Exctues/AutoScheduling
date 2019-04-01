@@ -49,7 +49,7 @@ def customized_view(request):
         gnumber = request.POST['Group']
         print("Group Number: gnumber", gnumber)
         ans = list()
-        if gnumber == 1:
+        if gnumber == '1':
             ans.append(["9:00", "10:30", "Networks Lecture"])
             ans.append(["10:35", "12:05", "Networks Tutorial"])
             ans.append(["12:10", "13:40", "Networks Lab"])
@@ -57,16 +57,18 @@ def customized_view(request):
             ans.append(["9:00", "10:30", "Lecture"])
             ans.append(["10:35", "12:05", "Tutorial"])
             ans.append(["12:10", "13:40", "Lab"])
+        print(ans)
+        print("Something has happened")
         return render(request, 'schedule.html', {
             'monday' : ans
         })
     else:
-        print("Request: ", request.GET)
+        # print("Request: ", request.GET)
         if request.GET:
-            gnumber = request.GET['Group']
+            gnumber = int(request.GET['Group'])
         else:
             gnumber = 1
-        print("Group Number: gnumber", gnumber)
+        # print("Group Number: gnumber", gnumber)
         ans = list()
         if gnumber == 1:
             ans.append(["9:00", "10:30", "Networks Lecture"])
