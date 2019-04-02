@@ -13,7 +13,7 @@ import json
 def model_form_upload(request):
     #form = DocumentForm()
     if request.method == 'POST':
-        save_path = os.path.join(settings.BASE_DIR, 'files/')
+        save_path = os.path.join(settings.BASE_DIR, 'static/files/')
         path = default_storage.save(save_path, request.FILES['file'])
         ans = Data.getScheduleData(path).split(nl)
         #data = json.dumps(ans)
