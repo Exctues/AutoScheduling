@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('', views.model_form_upload, name='upload'),
     path('schedule/', views.customized_view, name='schedule'),
-    #path('csv/', views.print_csv_file, name='print_csv_file'),
+    path('login/user', views.login_handle, name='login_user'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.BASE_DIR)

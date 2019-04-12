@@ -9,6 +9,8 @@ from Backend.Common import nl
 import os
 from CATt import settings
 import json
+from django.contrib.auth import login
+from django.contrib.auth import authenticate
 
 def model_form_upload(request):
     #form = DocumentForm()
@@ -23,26 +25,22 @@ def model_form_upload(request):
         #form = DocumentForm()
         return render(request, 'upload_form.html')
 
-
-def print_csv_file(request):
-    if request.method == 'POST':
-        save_path = os.path.join(settings.BASE_DIR, 'files/')
-        path = default_storage.save(save_path, request.FILES['file'])
-        ans = Data.getScheduleData(path).split(nl)
-        #data = json.dumps(ans)
-        #return HttpResponse(data, content_type="application/json")
-        return render(request, 'upload_form.html', { 'schedule': ans })
+def login_handle(request):
+    # req = request['POST']
+    username = request.POST['username']
+    password = request.POST['password']
+    if username is not None and password is not None:
+        print("set attributes")
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            print('redirecting')
+            return redirect('')
+        else:
+            print('login granted')
+            return HttpResponse()
     else:
-        redirect('')        
-
-def table_landing(request):
-    a = list()
-    a.append(["9:00", "10:30", "Networks Lecture"])
-    a.append(["10:35", "12:05", "Networks Tutorial"])
-    a.append(["12:10", "13:40", "Networks Lab"])
-    return render(request, 'schedule.html', {
-        'monday' : a
-    })
+        print("not set")
+        return redirect('')
 
 def customized_view(request):
     if request.method == 'POST':
