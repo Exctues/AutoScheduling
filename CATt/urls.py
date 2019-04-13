@@ -19,7 +19,7 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('u_csv.urls')),
+    path('upload/', include('u_csv.urls')),
 ]
 
 from django.views.generic import RedirectView

@@ -9,15 +9,23 @@ from Backend.Common import nl
 import os
 from CATt import settings
 import json
-
+from schedule import ga
+from schedule import data_process
 def model_form_upload(request):
-    #form = DocumentForm()
     if request.method == 'POST':
         save_path = os.path.join(settings.BASE_DIR, 'files/')
         path = default_storage.save(save_path, request.FILES['file'])
-        ans = Data.getScheduleData(path).split(nl)
-        #data = json.dumps(ans)
-        #return HttpResponse(data, content_type="application/json")
+        # ans = Data.getScheduleData(path).split(nl)
+        data = open(path)
+        data2 = json.load(data)
+        try:
+            init = ga.GeneticSchedule.get_initial_population(data=data2, set_config=True)
+        except:
+            ans="Wrong input format"
+            return render(request, 'genSched.html', { 'schedule': ans })
+        sch = data_process.DataProcessor.denumerate_data(ga.GeneticSchedule.run(init))
+        print(sch)
+        ans="Everything is ok"
         return render(request, 'genSched.html', { 'schedule': ans })
     else:
         #form = DocumentForm()
@@ -29,8 +37,6 @@ def print_csv_file(request):
         save_path = os.path.join(settings.BASE_DIR, 'files/')
         path = default_storage.save(save_path, request.FILES['file'])
         ans = Data.getScheduleData(path).split(nl)
-        #data = json.dumps(ans)
-        #return HttpResponse(data, content_type="application/json")
         return render(request, 'upload_form.html', { 'schedule': ans })
     else:
         redirect('')        
