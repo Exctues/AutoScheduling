@@ -21,7 +21,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', include('u_csv.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='../static/login.html'), {'next': 'user'}),
+    path('login/', auth_views.LoginView.as_view(template_name='../static/login2.html'), {'next': 'user'}),
+    path('login/', include('u_csv.urls')),
 ]
 
 from django.views.generic import RedirectView

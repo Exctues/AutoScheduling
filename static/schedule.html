@@ -59,6 +59,9 @@
 {% block navbar_set%}
 <nav class="navbar navbar-dark bg-success navbar-myset">
     <a class="navbar-brand navbar-myset my-logo-set" href="../">CATt</a>
+	{% if user.is_authenticated%}
+        <p class="navbar-myset my-logo-set">Hello, {{user.username}}</p>
+    {% endif%}
 </nav>
 {% endblock navbar_set%}
 {% block main%}

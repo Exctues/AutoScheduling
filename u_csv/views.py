@@ -1,6 +1,7 @@
 from django.core.files.storage import default_storage
 from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from u_csv.forms import DocumentForm
 from django.shortcuts import redirect
@@ -11,7 +12,9 @@ from CATt import settings
 import json
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def model_form_upload(request):
     #form = DocumentForm()
     if request.method == 'POST':
@@ -33,15 +36,16 @@ def login_handle(request):
         print("set attributes")
         user = authenticate(username=username, password=password)
         if user is not None:
-            print('redirecting')
-            return redirect('')
+            login(request, user)
+            return HttpResponseRedirect('/upload/')
         else:
             print('login granted')
-            return HttpResponse()
+            return HttpResponseRedirect('')
     else:
         print("not set")
-        return redirect('')
+        return HttpResponseRedirect('')
 
+@login_required(login_url='/login/')
 def customized_view(request):
     if request.method == 'POST':
         gnumber = request.POST['Group']
