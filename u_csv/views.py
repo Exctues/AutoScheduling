@@ -11,6 +11,9 @@ from CATt import settings
 import json
 from schedule import ga
 from schedule import data_process
+
+schedule = []
+
 def model_form_upload(request):
     if request.method == 'POST':
         save_path = os.path.join(settings.BASE_DIR, 'files/')
@@ -25,7 +28,8 @@ def model_form_upload(request):
             return render(request, 'genSched.html', { 'schedule': ans })
         sch = data_process.DataProcessor.denumerate_data(ga.GeneticSchedule.run(init))
         print(sch)
-        ans="Everything is ok"
+        ans=sch
+        schedule=sch
         return render(request, 'genSched.html', { 'schedule': ans })
     else:
         #form = DocumentForm()
