@@ -28,7 +28,7 @@ urlpatterns = [
 from django.views.generic import RedirectView
 
 urlpatterns += [
-    path('', RedirectView.as_view(url='/login/', permanent=False)),
+    path('', RedirectView.as_view(url='/upload/', permanent=False)),
 ]
 
 from django.conf import settings
