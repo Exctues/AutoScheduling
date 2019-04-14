@@ -13,17 +13,23 @@
         <form action="">
             Course:
             <select name="Course" size="1">
-                <option value="1">1</option>
+				{% for x in grades %}
+					<option value={{ x }}>{{ x }}</option>
+				{% endfor %}
+                {% comment %} <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="4">4</option> {% endcomment %}
             </select>
             Group: 
             <select name="Group" size="1">
-                <option value="1">1</option>
+				{% for x in groups %}
+					<option value={{ x }}>{{ x }}</option>
+				{% endfor %}
+                {% comment %} <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="4">4</option> {% endcomment %}
             </select>
             <button type="submit" name="submit" id="sbutton">Process</button>
         </form>
@@ -77,7 +83,7 @@
 				<div class="top-info"><span>Tuesday</span></div>
 				<ul>
 					{% block tuesday_s %}
-						{% for x in monday %}
+						{% for x in tuesday %}
 							{% comment %} {{x.0}}<br><br><br> {% endcomment %}
 							
 							<li class="single-event" data-start={{x.0}} data-end={{x.1}} data-content="event-abs-circuit" data-event="{% cycle 'event-1' 'event-2' 'event-3' 'event-4'%}">
@@ -94,7 +100,7 @@
 				<div class="top-info"><span>Wednesday</span></div>
 				<ul>
 					{% block wednesday_s %}
-						{% for x in monday %}
+						{% for x in wednesday %}
 							{% comment %} {{x.0}}<br><br><br> {% endcomment %}
 							
 							<li class="single-event" data-start={{x.0}} data-end={{x.1}} data-content="event-abs-circuit" data-event="{% cycle 'event-1' 'event-2' 'event-3' 'event-4'%}">
@@ -111,7 +117,7 @@
 				<div class="top-info"><span>Thursday</span></div>
 				<ul>
 					{% block thursday_s %}
-						{% for x in monday %}
+						{% for x in thursday %}
 							{% comment %} {{x.0}}<br><br><br> {% endcomment %}
 							
 							<li class="single-event" data-start={{x.0}} data-end={{x.1}} data-content="event-abs-circuit" data-event="{% cycle 'event-1' 'event-2' 'event-3' 'event-4'%}">
@@ -128,7 +134,23 @@
 				<div class="top-info"><span>Friday</span></div>
 				<ul>
 					{% block friday_s %}
-						{% for x in monday %}
+						{% for x in friday %}
+							{% comment %} {{x.0}}<br><br><br> {% endcomment %}
+							
+							<li class="single-event" data-start={{x.0}} data-end={{x.1}} data-content="event-abs-circuit" data-event="{% cycle 'event-1' 'event-2' 'event-3' 'event-4'%}">
+								<a href="#0">
+									<em class="event-name">{{x.2}}</em>
+								</a>
+							</li> 
+						{% endfor%}
+					{% endblock %}
+				</ul>
+			</li>
+			<li class="events-group">
+				<div class="top-info"><span>Saturday</span></div>
+				<ul>
+					{% block saturday_s %}
+						{% for x in saturday %}
 							{% comment %} {{x.0}}<br><br><br> {% endcomment %}
 							
 							<li class="single-event" data-start={{x.0}} data-end={{x.1}} data-content="event-abs-circuit" data-event="{% cycle 'event-1' 'event-2' 'event-3' 'event-4'%}">
