@@ -124,7 +124,7 @@ def ParseJSONSlot(table: Schedule, s: str) -> list:
 
 def AddAlgoOutputToDS(json_path: str, table: Schedule):
     print("path=", json_path)
-    with open('/home/abdurasul/Projects/AutoScheduling/Backend/sample.json', encoding='utf-8') as f:
+    with open(json_path, encoding='utf-8') as f:
         inp = f.read().strip()
     L = len(inp)
     if L < JSON_MinLength:
@@ -166,4 +166,4 @@ def sample():
                 print(s)
 
 
-sample()
+# sample()

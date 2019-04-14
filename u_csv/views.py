@@ -73,9 +73,12 @@ def customized_view(request):
 
         
         table = Schedule.Schedule(days, times, grades, list(), list(), list())
+        json_path = os.path.join(settings.BASE_DIR, 'Backend/')
+        json_path = json_path + 'sample.json'
+        # print("json_path = ", json_path)
         try:
-            Schedule.AddAlgoOutputToDS('sample.json', table)
-        except JSONException as e:
+            Schedule.AddAlgoOutputToDS(json_path, table)
+        except Schedule.JSONException as e:
             print(e)
             return HttpResponse()
         
