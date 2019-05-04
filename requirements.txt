@@ -1,0 +1,5 @@
+django
+requests
+pandas
+django_tables2
+

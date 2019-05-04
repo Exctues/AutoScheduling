@@ -1,0 +1,81 @@
+{% extends 'Base2.html' %}
+{% block main_frame %}
+    <main id="main" role="main" class="px-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">File Name</th>
+                <th scope="col">Date uploaded</th>
+                <th scope="col">Max. time</th>
+                <th scope="col">Generate</th>
+                <th scope="col">Download</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in hItems %}
+                <tr>
+                    <th scope="row">{{ forloop.counter0 }}</th>
+
+                    <td>{{ x.original_file_name }}</td>
+                    <td>{{ x.uploaded_at }}</td>
+                    <td>
+                        <select class="custom-select" id={{ x.id }} name="Group" size="1" data-style="bg-success">
+                            <option value="0">Set time</option>
+                            <option value="1">1 min</option>
+                            <option value="2">2 min</option>
+                            <option value="5">5 min</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success" onclick="clickHandle({{ x.id }})" type="submit"
+                                id="subbutton">Generate
+                        </button>
+                    </td>
+                    <td>
+
+                        <button class="btn btn-outline-success"
+                                onclick="location.href='/upload/download_uploaded/{{ x.id }}/';" type="submit"
+                                id="subbutton">Download
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div id="time-modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main_frame %}
+{% block footer_scripts %}
+    {% load staticfiles %}
+    <script type="text/javascript">
+        function clickHandle(csvid) {
+            var e = document.getElementById(csvid);
+            var time = e.options[e.selectedIndex].value;
+            if (time != 0) {
+                link_str = '/upload/uploaded/' + csvid + '/' + time + '/';
+                location.href = link_str;
+            } else {
+                alert("You didn't specify maximum time to generate the schedule.");
+            }
+        }
+    </script>
+{% endblock footer_scripts %}

@@ -1,0 +1,38 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block main %}
+    <div class="wrapper">
+
+        <!-- Sidebar Holder -->
+        <nav id="sidebar" style="min-height: calc(100vh - 75px);">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="{% url 'upload' %}">Generate schedule</a>
+                </li>
+                <li>
+                    <a href="{% url 'uploaded' %}">Uploaded files</a>
+                </li>
+                <li>
+                    <a href="{% url 'history' %}">Generated schedules</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li><a href="{% url 'logout_user' %}" class="signOut">Sign out</a></li>
+            </ul>
+        </nav>
+        <!-- Page Content Holder -->
+        <div style="overflow: scroll; width: 100%;">
+            {% block main_frame %}
+
+            {% endblock main_frame %}
+        </div>
+    </div>
+
+
+{% endblock main %}
+{% block footer_scripts %}
+{% endblock footer_scripts %}

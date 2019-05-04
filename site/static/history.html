@@ -1,0 +1,73 @@
+{% extends 'Base2.html' %}
+{% block main_frame %}
+    <main id="main" role="main" class="px-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Google Sheet Link</th>
+                <th scope="col">Date Generated</th>
+                <th scope="col">Status</th>
+                <th scope="col">Editing</th>
+                <th scope="col">Download</th>
+                <th scope="col">Show</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in schItems %}
+                <tr>
+                    <th scope="row">{{ forloop.counter0 }}</th>
+                    <td>
+                        {% if x.status == "Done" %}
+                            <a href="{{ x.google_sheet }}">Google sheet link</a>
+                        {% else %}
+                            <span class="disable-links"><a href="#">Link is not yet available</a></span>
+                        {% endif %}
+                    </td>
+                    <td>{{ x.date_generated }}</td>
+                    <td>{{ x.status }}</td>
+                    <td>
+                        {% if x.status == "Done" %}
+                            <button class="btn btn-outline-success"
+                                    onclick="location.href='/edit/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Edit
+                            </button>
+                        {% else %}
+                            <button disabled class="btn btn-outline-success"
+                                    onclick="location.href='/edit/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Edit
+                            </button>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if x.status == "Done" %}
+                            <button class="btn btn-outline-success"
+                                    onclick="location.href='/upload/download/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Download
+                            </button>
+                        {% else %}
+                            <button disabled class="btn btn-outline-success"
+                                    onclick="location.href='/upload/download/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Download
+                            </button>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if x.status == "Done" %}
+                            <button class="btn btn-outline-success"
+                                    onclick="location.href='/upload/schedule/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Show
+                            </button>
+                        {% else %}
+                            <button disabled class="btn btn-outline-success"
+                                    onclick="location.href='/upload/schedule/{{ x.id }}/';" type="submit"
+                                    id="subbutton">Show
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock main_frame %}

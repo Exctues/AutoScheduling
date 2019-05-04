@@ -1,0 +1,71 @@
+{% extends 'Base2.html' %}
+{% block main_frame %}
+    <main id="main" role="main" class="px-4">
+        <script type="text/javascript">
+            var a = {{ Schedule_Number }};
+        </script>
+        <div id="Schedule">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Course name</th>
+                    <th scope="col">Lesson type</th>
+                    <th scope="col">Faculty</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Time</th>
+                    <th scope="col"> Auditorium</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for x in schedule %}
+                    <tr class="item">
+                        <th scope="row">{{ forloop.counter0 }}</th>
+                        <td id="course_name">{{ x.Course_name }}</td>
+                        <td id="lesson_type">{{ x.Lesson_type }}</td>
+                        <td id="faculty">{{ x.Faculty }}</td>
+                        <td id="group">{{ x.Group }}</td>
+                        <td id="day"><select>
+                            {% for day in days %}
+                                {% ifequal  day  x.Day %}
+                                    <option value="{{ day }}" selected>{{ day }}</option>
+                                {% endifequal %}
+                                {% ifnotequal  day  x.Day %}
+                                    <option value="{{ day }}">{{ day }}</option>
+                                {% endifnotequal %}
+                            {% endfor %}
+                        </select></td>
+                        <td id="time"><select>
+                            {% for time in times %}
+                                {% ifequal  time  x.Time %}
+                                    <option value="{{ time }}" selected>{{ time }}</option>
+                                {% endifequal %}
+                                {% ifnotequal  time  x.Time %}
+                                    <option value="{{ time }}">{{ time }}</option>
+                                {% endifnotequal %}
+                            {% endfor %}
+                        </select></td>
+                        <td id="auditorium"><select>
+                            {% for auditorium in auditoriums %}
+                                {% ifequal  auditorium  x.Auditorium %}
+                                    <option value="{{ auditorium }}" selected>{{ auditorium }}</option>
+                                {% endifequal %}
+                                {% ifnotequal  auditorium  x.Auditorium %}
+                                    <option value="{{ auditorium }}">{{ auditorium }}</option>
+                                {% endifnotequal %}
+                            {% endfor %}
+                        </select></td>
+                    </tr>
+                {% endfor %}
+                <button class="btn btn-outline-success" onclick="sendSchedule()"
+                        type="submit" id="subbutton">Show
+                </button>
+                <button class="btn btn-outline-success"
+                        type="button" id="subbutton" onclick="saveSchedule()">Save
+                </button>
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock main_frame %}

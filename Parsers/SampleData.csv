@@ -1,0 +1,21 @@
+Days,Monday,Tuesday,Wednesday,Thursday,Friday,,,,,,,,,,,,,,,,,,
+Time,09:00-10:30,10:35-12:05,12:05-13:40,14:10-15:40,15:45-17:15,17:20-18:50,18:55-20:25,20:30-22:00,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+Rooms,105,106,107,108,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,
+Capacity,150,150,150,150,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+,,,,,,,,,,,,,,,,,,,,,,,
+Instructors,Joseph Brown,Hamna Aslam,Nikita Lozhnikov,Evgenii Bobrov,Ivan Dmitriev,Alexandr Borisov,Vladislav Dmitriyev,Alexey Kanatov,Luiz Araújo,Nikita Zhuchkov,Sergey Gorodetskiy,Rustam Gafarov,Alexey Karachev,Pavel Khakimov,Alexander Tormasov,Giancarlo Succi,Muhammad Fahim,Nikita Bogomazov,Adam Zubair,Artem Burmyakov,,,
+Bad days,Wednesday,,,Thursday,,,,Monday,,,Saturday,,,,Saturday; Monday,,,,,,,,
+Bad slots,,,,20:30-22:00,,,,18:55-20:25,,,20:30-22:00,,,,15:45-17:15; 17:20-18:50,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+Group,B17-01,B17-02,B17-03,B17-05,B17-06,B17-07,B17-08,,,,,,,,,,,,,,,,
+People #,21,21,21,21,21,21,21,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+Grade,B17,,,,,,,,,,,,,,,,,,,,,,
+Groups,B17-01; B17-02; B17-03; B17-05; B17-06; B17-07; B17-08,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+Course,Introduction to AI,Introduction to AI,Introduction to AI,Introduction to AI,Data Modeling and Databases 2,Data Modeling and Databases 2,Data Modeling and Databases 2,Data Modeling and Databases 2,Software Project,Software Project,Software Project,Software Project,Software Project,Probability and Statistics,Probability and Statistics,Probability and Statistics,Probability and Statistics,Probability and Statistics,Networks,Networks,Networks,Networks,Networks
+Type,Lecture,Tutorial,Lab,Lab,Lecture,Tutorial,Lab,Lab,Lecture,Lab,Lab,Lab,Lab,Lecture,Tutorial,Lab,Lab,Lab,Lecture,Tutorial,Lab,Lab,Lab
+Groups or Grade,B17,B17,B17-02; B17-03; B17-05,B17-01; B17-06; B17-07; B17-08,B17,B17,B17-01; B17-05; B17-06; B17-07,B17-02; B17-03; B17-08,B17,B17-02; B17-03,B17-05; B17-06,B17-07; B17-08,B17-01,B17,B17,B17-01,B17-05; B17-06; B17-07; B17-08,B17-02; B17-03,B17,B17,B17-03,B17-01; B17-02; B17-05; B17-06,B17-07; B17-08
+Instructor,Joseph Brown,Hamna Aslam,Hamna Aslam,Nikita Lozhnikov,Alexey Kanatov,Luiz Araújo,Luiz Araújo,Nikita Zhuchkov,Evgenii Bobrov,Ivan Dmitriev,Alexandr Borisov,Vladislav Dmitriyev,Evgenii Bobrov,Sergey Gorodetskiy,Rustam Gafarov,Rustam Gafarov,Alexey Karachev,Pavel Khakimov,Giancarlo Succi,Muhammad Fahim,Adam Zubair,Nikita Bogomazov,Artem Burmyakov
+# a week,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1

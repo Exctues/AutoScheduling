@@ -1,0 +1,48 @@
+{% extends 'Base2.html' %}
+{% block main_frame %}
+    <main id="main" role="main" class="px-4">
+        {% if url %}
+            <a href={{ url }}>Google Spreadsheet</a>
+        {% endif %}
+        <form action="{% url 'upload' %}" method="post" id="uploadCSV" enctype="multipart/form-data"
+              class="row mt-4">
+            {% csrf_token %}
+            <input type="hidden" name="key" id="keyInput" value="">
+            <label class="col text-center mt-2" for="customFile">Upload csv</label>
+
+            <div class="col-md-7 custom-file" id="customFile" lang="es">
+                <input type="file" name="file" class="custom-file-input"
+                       style="cursor: pointer;"
+                       id="inputFile"
+                       aria-describedby="fileHelp" required>
+                <label class="custom-file-label sot-file-label" for="inputFile"
+                       id="inputFile_label">
+                    Select file...
+                </label>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <button type="submit"
+                        class="btn btn-outline-success">
+                    upload
+                </button>
+            </div>
+        </form>
+        <div class="container">
+            {% if error_message %}
+                <h1>
+                    Error in parsing input file
+                </h1>
+                <p>
+                    {{ error_message }}
+                </p>
+            {% endif %}
+        </div>
+    </main>
+
+    <script>
+        $('.custom-file-input').on('change', function () {
+            let fileName = document.getElementById("inputFile").files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        });
+    </script>
+{% endblock main_frame %}
