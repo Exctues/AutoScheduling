@@ -1,6 +1,7 @@
 # Automatic Time Table creation  
 Purpose of the project - create web-service which enable DOE to  
-create appropriate university schedule based on imported data.  
+create appropriate university schedule based on imported data. 
+Link to the doc of Backlog and US here: https://docs.google.com/document/d/1Q6XTWs7_xvN5X87-OeV39380I0uzNNHe1ufrY6663u0/edit
 
 ## Current features of the project:
 1. User profiles (login/logout/register)
